@@ -62,11 +62,11 @@ class OrderPage extends StatelessWidget implements MyPage {
                             onPressed: buttomOnPressed)))
               ]))),
       Positioned(
-          right: 0,
-          bottom: 0,
+          right: 10,
+          bottom: 10,
           child: Image(
-            width: 150,
-            height: 150,
+            width: 140,
+            height: 140,
             image: backgroundImage,
           ))
     ]);
