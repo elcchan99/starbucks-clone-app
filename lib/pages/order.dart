@@ -32,26 +32,22 @@ class OrderPage extends StatelessWidget implements MyPage {
           color: Colors.white,
           child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-              child: Column(children: [
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Container(
-                      child: Text(
-                    title,
-                    style: _titleTextStyle,
-                  )),
-                ),
-                SizedBox(height: 20),
-                Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                        width: double.infinity,
+                        child: Text(
+                          title,
+                          style: _titleTextStyle,
+                        )),
+                    Container(
+                        margin: EdgeInsets.only(top: 20),
                         width: 210,
                         child: Container(
-                            child: Text(description, style: _descTextStyle)))),
-                SizedBox(height: 20),
-                Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
+                            child: Text(description, style: _descTextStyle))),
+                    Container(
+                        margin: EdgeInsets.only(top: 20),
                         child: FlatButton(
                             padding: EdgeInsets.symmetric(horizontal: 22),
                             color: Constants.STARBUCKS_GREEN,
@@ -59,8 +55,8 @@ class OrderPage extends StatelessWidget implements MyPage {
                               borderRadius: BorderRadius.circular(18.0),
                             ),
                             child: Text(buttonText, style: _buttonTextStyle),
-                            onPressed: buttomOnPressed)))
-              ]))),
+                            onPressed: buttomOnPressed))
+                  ]))),
       Positioned(
           right: 10,
           bottom: 10,
