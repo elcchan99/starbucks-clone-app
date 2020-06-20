@@ -26,46 +26,46 @@ class OrderPage extends StatelessWidget implements MyPage {
       String buttonText,
       Function buttomOnPressed,
       AssetImage backgroundImage}) {
-    return Stack(children: [
-      Material(
-          elevation: 3,
-          color: Colors.white,
-          child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                        width: double.infinity,
-                        child: Text(
-                          title,
-                          style: _titleTextStyle,
-                        )),
-                    Container(
-                        margin: EdgeInsets.only(top: 20),
-                        width: 210,
-                        child: Container(
-                            child: Text(description, style: _descTextStyle))),
-                    Container(
-                        margin: EdgeInsets.only(top: 20),
-                        child: FlatButton(
-                            padding: EdgeInsets.symmetric(horizontal: 22),
-                            color: Constants.STARBUCKS_GREEN,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18.0),
-                            ),
-                            child: Text(buttonText, style: _buttonTextStyle),
-                            onPressed: buttomOnPressed))
-                  ]))),
-      Positioned(
-          right: 10,
-          bottom: 10,
-          child: Image(
-            width: 140,
-            height: 140,
-            image: backgroundImage,
-          ))
-    ]);
+    return Material(
+      elevation: 3,
+      color: Colors.white,
+      child: Stack(children: [
+        Positioned(
+            right: 10,
+            bottom: 10,
+            child: Image(
+              width: 150,
+              height: 150,
+              image: backgroundImage,
+            )),
+        Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Container(
+                  width: double.infinity,
+                  child: Text(
+                    title,
+                    style: _titleTextStyle,
+                  )),
+              Container(
+                  margin: EdgeInsets.only(top: 20),
+                  width: 210,
+                  child: Container(
+                      child: Text(description, style: _descTextStyle))),
+              Container(
+                  margin: EdgeInsets.only(top: 20),
+                  child: FlatButton(
+                      padding: EdgeInsets.symmetric(horizontal: 22),
+                      color: Constants.STARBUCKS_GREEN,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                      ),
+                      child: Text(buttonText, style: _buttonTextStyle),
+                      onPressed: buttomOnPressed))
+            ])),
+      ]),
+    );
   }
 
   @override
