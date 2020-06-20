@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:starbucks_app/pages/gift.dart';
 import 'package:starbucks_app/pages/stores.dart';
 
+import 'constants.dart' as Constants;
 import 'pages/home.dart';
 import 'pages/order.dart';
 import 'pages/pay.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
                 color: Colors.black,
                 fontSize: 35,
                 fontWeight: FontWeight.bold)),
-        // primarySwatch: Colors.white,
+        scaffoldBackgroundColor: const Color.fromRGBO(247, 247, 247, 1),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MainApp(),
@@ -81,16 +82,26 @@ class _MainAppState extends State<MainApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: pages[_currentPageIndex],
-      bottomNavigationBar: BottomNavigationBar(
-          items: pages
-              .map((p) => BottomNavigationBarItem(
-                    icon: p.navIcon,
-                    title: Text(p.title),
-                  ))
-              .toList(),
-          currentIndex: _currentPageIndex,
-          type: BottomNavigationBarType.fixed,
-          onTap: onNavigate),
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+            // sets the background color of the `BottomNavigationBar`
+            canvasColor: Colors.white,
+            // sets the active color of the `BottomNavigationBar` if `Brightness` is light
+            primaryColor: Constants.STARBUCKS_GREEN,
+            textTheme: Theme.of(context).textTheme.copyWith(
+                caption: TextStyle(
+                    color: Constants.PARE_GREY, fontWeight: FontWeight.bold))),
+        child: BottomNavigationBar(
+            items: pages
+                .map((p) => BottomNavigationBarItem(
+                      icon: SizedBox(width: 50, height: 50, child: p.navIcon),
+                      title: Text(p.title),
+                    ))
+                .toList(),
+            currentIndex: _currentPageIndex,
+            type: BottomNavigationBarType.fixed,
+            onTap: onNavigate),
+      ),
     );
   }
 }
