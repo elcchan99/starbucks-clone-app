@@ -34,6 +34,26 @@ class MyApp extends StatelessWidget {
 abstract class MyPage extends Widget {
   String get title;
   Image get navIcon;
+
+  static PreferredSizeWidget buildAppBar(context, {title}) {
+    return PreferredSize(
+      preferredSize: Size.fromHeight(90),
+      child: AppBar(
+        backgroundColor: Colors.white,
+        flexibleSpace: Container(
+          height: double.infinity,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+            child: Align(
+                alignment: Alignment.bottomLeft,
+                child: Text(title,
+                    style: Theme.of(context).primaryTextTheme.headline6)),
+          ),
+        ),
+        excludeHeaderSemantics: true,
+      ),
+    );
+  }
 }
 
 class MainApp extends StatefulWidget {

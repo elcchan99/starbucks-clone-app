@@ -7,6 +7,8 @@ class GiftPage extends StatelessWidget implements MyPage {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Container(child: Text("Gift")));
+    return Scaffold(
+        appBar: MyPage.buildAppBar(context, title: title),
+        body: Center(child: Container(child: Text("Gift"))));
   }
 }

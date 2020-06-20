@@ -8,6 +8,8 @@ class StorePage extends StatelessWidget implements MyPage {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Container(child: Text("Store")));
+    return Scaffold(
+        appBar: MyPage.buildAppBar(context, title: title),
+        body: Center(child: Container(child: Text("Store"))));
   }
 }

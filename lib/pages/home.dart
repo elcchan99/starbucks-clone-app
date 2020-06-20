@@ -8,6 +8,8 @@ class HomePage extends StatelessWidget implements MyPage {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Container(child: Text("Home")));
+    return Scaffold(
+        appBar: MyPage.buildAppBar(context, title: title),
+        body: Center(child: Container(child: Text("Home"))));
   }
 }
