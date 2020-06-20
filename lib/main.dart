@@ -20,10 +20,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.grey,
         primaryTextTheme: TextTheme(
-            headline6: TextStyle(
-                color: Colors.black,
-                fontSize: 35,
-                fontWeight: FontWeight.bold)),
+          // App Bar title
+          headline6: TextStyle(
+              color: Colors.black, fontSize: 35, fontWeight: FontWeight.bold),
+        ),
         scaffoldBackgroundColor: const Color.fromRGBO(247, 247, 247, 1),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
