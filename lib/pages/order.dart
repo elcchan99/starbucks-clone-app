@@ -7,25 +7,68 @@ class OrderPage extends StatelessWidget implements MyPage {
   final String title = "Order";
   final Image navIcon = Image(image: AssetImage("assets/icons/cup.png"));
 
-  TextStyle _titleTextStyle = TextStyle(
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: MyPage.buildAppBar(context, title: title),
+        body: Padding(
+          padding: EdgeInsets.all(16),
+          child: ListView(
+            children: [
+              OrderCard(
+                title: "Starbuck Delivers Delivery Service",
+                description: "Open for orders in selected Hong Kong areas.",
+                buttonText: "Order now",
+                buttomOnPressed: () {},
+                backgroundImage: AssetImage("assets/images/deliver.png"),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              OrderCard(
+                title: "Pickup at Starbucks",
+                description: "Exclusive to Starbucks Rewards™ members.",
+                buttonText: "View menu",
+                buttomOnPressed: () {},
+                backgroundImage: AssetImage("assets/images/branch.png"),
+              ),
+            ],
+          ),
+        ));
+  }
+}
+
+class OrderCard extends StatelessWidget {
+  final String title;
+  final String description;
+  final String buttonText;
+  Function buttomOnPressed = () {};
+  final AssetImage backgroundImage;
+
+  OrderCard({
+    Key key,
+    this.title = '',
+    this.description = '',
+    this.buttonText = '',
+    this.buttomOnPressed,
+    this.backgroundImage,
+  }) : super(key: key);
+
+  final TextStyle _titleTextStyle = const TextStyle(
     color: Colors.black,
     fontSize: 26,
     fontWeight: FontWeight.bold,
   );
-  TextStyle _descTextStyle = TextStyle(
+  final TextStyle _descTextStyle = const TextStyle(
       color: Constants.PARE_GREY, fontSize: 18, fontWeight: FontWeight.bold);
-  TextStyle _buttonTextStyle = TextStyle(
+  final TextStyle _buttonTextStyle = const TextStyle(
     color: Colors.white,
     fontSize: 16,
     fontWeight: FontWeight.bold,
   );
 
-  Widget buildCard(context,
-      {String title,
-      String description,
-      String buttonText,
-      Function buttomOnPressed,
-      AssetImage backgroundImage}) {
+  @override
+  Widget build(BuildContext context) {
     return Material(
       elevation: 3,
       color: Colors.white,
@@ -66,37 +109,5 @@ class OrderPage extends StatelessWidget implements MyPage {
             ])),
       ]),
     );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: MyPage.buildAppBar(context, title: title),
-        body: Padding(
-          padding: EdgeInsets.all(16),
-          child: ListView(
-            children: [
-              buildCard(
-                context,
-                title: "Starbuck Delivers Delivery Service",
-                description: "Open for orders in selected Hong Kong areas.",
-                buttonText: "Order now",
-                buttomOnPressed: () {},
-                backgroundImage: AssetImage("assets/images/deliver.png"),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              buildCard(
-                context,
-                title: "Pickup at Starbucks",
-                description: "Exclusive to Starbucks Rewards™ members.",
-                buttonText: "View menu",
-                buttomOnPressed: () {},
-                backgroundImage: AssetImage("assets/images/branch.png"),
-              ),
-            ],
-          ),
-        ));
   }
 }
