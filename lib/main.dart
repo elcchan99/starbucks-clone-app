@@ -95,7 +95,9 @@ class _MainAppState extends State<MainApp> {
             items: pages
                 .map((p) => BottomNavigationBarItem(
                       icon: SizedBox(width: 50, height: 50, child: p.navIcon),
-                      title: Text(p.title),
+                      title: Text(
+                        p.title,
+                      ),
                     ))
                 .toList(),
             currentIndex: _currentPageIndex,

@@ -39,7 +39,7 @@ class OrderCard extends StatelessWidget {
   final String title;
   final String description;
   final String buttonText;
-  Function buttomOnPressed = () {};
+  final Function buttomOnPressed;
   final AssetImage backgroundImage;
 
   OrderCard({
@@ -47,7 +47,7 @@ class OrderCard extends StatelessWidget {
     this.title = '',
     this.description = '',
     this.buttonText = '',
-    this.buttomOnPressed,
+    @required this.buttomOnPressed,
     this.backgroundImage,
   }) : super(key: key);
 
@@ -57,7 +57,7 @@ class OrderCard extends StatelessWidget {
     fontWeight: FontWeight.bold,
   );
   final TextStyle _descTextStyle = const TextStyle(
-      color: Constants.PARE_GREY, fontSize: 18, fontWeight: FontWeight.bold);
+      color: Constants.PARE_GREY, fontSize: 15, fontWeight: FontWeight.bold);
   final TextStyle _buttonTextStyle = const TextStyle(
     color: Colors.white,
     fontSize: 16,
@@ -92,20 +92,31 @@ class OrderCard extends StatelessWidget {
                           style: _titleTextStyle,
                         )),
                     Container(
-                        margin: EdgeInsets.only(top: 20),
-                        width: 210,
+                      margin: EdgeInsets.only(top: 20),
+                      child: FractionallySizedBox(
+                        widthFactor: 0.5,
                         child: Container(
-                            child: Text(description, style: _descTextStyle))),
+                            child: Text(description, style: _descTextStyle)),
+                      ),
+                    ),
                     Container(
                         margin: EdgeInsets.only(top: 20),
-                        child: FlatButton(
-                            padding: EdgeInsets.symmetric(horizontal: 22),
-                            color: Constants.STARBUCKS_GREEN,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18.0),
-                            ),
-                            child: Text(buttonText, style: _buttonTextStyle),
-                            onPressed: buttomOnPressed))
+                        child: ButtonTheme(
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                          // reset button default size
+                          minWidth: 0,
+                          height: 0,
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                          child: FlatButton(
+                              color: Constants.STARBUCKS_GREEN,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18.0),
+                              ),
+                              child: Text(buttonText, style: _buttonTextStyle),
+                              onPressed: buttomOnPressed),
+                        ))
                   ])),
         ]),
       ),
